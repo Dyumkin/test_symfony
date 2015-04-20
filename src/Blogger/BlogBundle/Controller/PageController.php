@@ -16,7 +16,15 @@ class PageController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('BlogBundle:Page:index.html.twig');
+        $em = $this->getDoctrine()
+            ->getEntityManager();
+
+        $posts = $em->getRepository('BlogBundle:Post')
+            ->getLatestPosts();
+
+        return $this->render('BlogBundle:Page:index.html.twig', array(
+            'blogs' => $posts
+        ));
     }
 
     public function aboutAction()
@@ -51,6 +59,28 @@ class PageController extends Controller
 
         return $this->render('BlogBundle:Page:contact.html.twig', array(
             'form' => $form->createView()
+        ));
+    }
+
+    public function sidebarAction()
+    {
+        $em = $this->getDoctrine()
+            ->getEntityManager();
+
+        $tags = $em->getRepository('BlogBundle:Post')
+            ->getTags();
+
+        $tagWeights = $em->getRepository('BlogBundle:Post')
+            ->getTagWeights($tags);
+
+        $commentLimit   = $this->container
+            ->getParameter('blog.comments.latest_comment_limit');
+        $latestComments = $em->getRepository('BlogBundle:Comment')
+            ->getLatestComments($commentLimit);
+
+        return $this->render('BlogBundle:Page:sidebar.html.twig', array(
+            'latestComments'    => $latestComments,
+            'tags'              => $tagWeights
         ));
     }
 } 
