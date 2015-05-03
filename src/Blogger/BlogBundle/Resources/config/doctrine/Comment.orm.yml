@@ -1,0 +1,53 @@
+Blogger\BlogBundle\Entity\Comment:
+    type: entity
+    table: comment
+    repositoryClass: Blogger\BlogBundle\Entity\Repository\CommentRepository
+    indexes:
+        IDX_9474526CDAE07E97:
+            columns:
+                - blog_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        user:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        comment:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+        approved:
+            type: boolean
+            nullable: false
+            comment: ''
+        created:
+            type: datetime
+            nullable: false
+            comment: ''
+        updated:
+            type: datetime
+            nullable: false
+            comment: ''
+    manyToOne:
+        blog:
+            targetEntity: Blogger\BlogBundle\Entity\Post
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                blog_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

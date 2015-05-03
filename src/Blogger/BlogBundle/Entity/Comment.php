@@ -197,7 +197,7 @@ class Comment {
      * @param \Blogger\BlogBundle\Entity\Post $blog
      * @return Comment
      */
-    public function setBlog(\Blogger\BlogBundle\Entity\Post $blog = null)
+    public function setBlog(Post $blog = null)
     {
         $this->blog = $blog;
 
