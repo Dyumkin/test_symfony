@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: @BlogBundle/Resources/config/config.yml }
+    - { resource: @BlogBundle/Resources/config/admin.yml }
 
 framework:
     #esi:             ~
@@ -77,3 +78,11 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Blogger\BlogBundle\Entity\User
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        # Your other blocks
