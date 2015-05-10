@@ -30,7 +30,8 @@ class Post {
     protected $title;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $author;
 
@@ -120,12 +121,12 @@ class Post {
     /**
      * Set author
      *
-     * @param string $author
+     * @param \Blogger\BlogBundle\Entity\User $user
      * @return Post
      */
-    public function setAuthor($author)
+    public function setAuthor(User $user)
     {
-        $this->author = $author;
+        $this->author = $user;
 
         return $this;
     }
@@ -133,7 +134,7 @@ class Post {
     /**
      * Get author
      *
-     * @return string 
+     * @return \Blogger\BlogBundle\Entity\User
      */
     public function getAuthor()
     {

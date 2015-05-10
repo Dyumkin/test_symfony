@@ -22,6 +22,11 @@
                 <nav>
                     <ul class="navigation">
                         <li><a href="{{ path('blog_homepage') }}">Home</a></li>
+                        <li><a href="{{ path ('post_new')}}">Create Post</a></li>
+                        <li><a href="{{ path('fos_user_security_login')}}">Login</a></li>
+                        <li><a href="{{ path('fos_user_security_logout')}}">Logout</a></li>
+                        <li><a href="{{ path('fos_user_registration_register')}}">Register</a></li>
+                        <li><a href="{{ path('fos_user_profile_show')}}">Profile</a></li>
                         <li><a href="{{ path('blog_about') }}">About</a></li>
                         <li><a href="{{ path('blog_contact') }}">Contact</a></li>
                     </ul>
@@ -31,7 +36,7 @@
 
         <hgroup>
             <h2>{% block blog_title %}<a href="#">symblog</a>{% endblock %}</h2>
-            <h3>{% block blog_tagline %}<a href="#">creating a blog in Symfony2</a>{% endblock %}</h3>
+            <h3>{% block blog_tagline %}<a href="#">test blog on Symfony2</a>{% endblock %}</h3>
         </hgroup>
     </header>
 

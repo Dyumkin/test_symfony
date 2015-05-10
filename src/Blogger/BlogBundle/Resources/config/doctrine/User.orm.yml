@@ -6,3 +6,7 @@ Blogger\BlogBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+    oneToMany:
+        posts:
+            targetEntity: Blogger\BlogBundle\Entity\Post
+            mappedBy: author
