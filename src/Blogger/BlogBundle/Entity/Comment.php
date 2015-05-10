@@ -26,7 +26,8 @@ class Comment {
     protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
@@ -118,10 +119,10 @@ class Comment {
     /**
      * Set user
      *
-     * @param string $user
+     * @param \Blogger\BlogBundle\Entity\User $user
      * @return Comment
      */
-    public function setUser($user)
+    public function setUser(User $user)
     {
         $this->user = $user;
 
@@ -131,7 +132,7 @@ class Comment {
     /**
      * Get user
      *
-     * @return string 
+     * @return \Blogger\BlogBundle\Entity\User
      */
     public function getUser()
     {
@@ -216,9 +217,6 @@ class Comment {
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        $metadata->addPropertyConstraint('user', new NotBlank(array(
-            'message' => 'You must enter your name'
-        )));
         $metadata->addPropertyConstraint('comment', new NotBlank(array(
             'message' => 'You must enter a comment'
         )));

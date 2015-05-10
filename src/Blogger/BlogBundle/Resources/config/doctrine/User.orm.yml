@@ -10,3 +10,6 @@ Blogger\BlogBundle\Entity\User:
         posts:
             targetEntity: Blogger\BlogBundle\Entity\Post
             mappedBy: author
+        comments:
+            targetEntity: Blogger\BlogBundle\Entity\Comment
+            mappedBy: user

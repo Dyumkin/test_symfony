@@ -82,7 +82,19 @@ fos_user:
 sonata_block:
     default_contexts: [cms]
     blocks:
-        # Enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]
-        # Your other blocks
+
+sonata_admin:
+    dashboard:
+        groups:
+            blogger.admin.group.content:
+                label: blogger.admin.group.content
+                label_catalogue: BlogBundle
+                items:
+                    - sonata.admin.post
+                    - sonata.admin.comment
+            blogger.admin.group.blog:
+                items: ~
+                roles: [ ROLE_ADMIN, ROLE_SUPER_ADMIN ]
+            blogger.admin.group.misc: ~

@@ -2,10 +2,26 @@ services:
     sonata.admin.post:
         class: Blogger\BlogBundle\Admin\PostAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Post" }
+            - name: sonata.admin
+              manager_type: orm
+              group: "blogger.admin.group.content"
+              label: "blogger.admin.model.post"
         arguments:
             - ~
             - Blogger\BlogBundle\Entity\Post
+            - ~
+        calls:
+            - [ setTranslationDomain, [BlogBundle]]
+    sonata.admin.comment:
+        class: Blogger\BlogBundle\Admin\CommentAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: "blogger.admin.group.content"
+              label: "blogger.admin.model.comment"
+        arguments:
+            - ~
+            - Blogger\BlogBundle\Entity\Comment
             - ~
         calls:
             - [ setTranslationDomain, [BlogBundle]]
