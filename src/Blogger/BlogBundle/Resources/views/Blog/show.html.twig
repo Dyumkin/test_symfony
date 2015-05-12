@@ -10,7 +10,7 @@
             </div>
             <h2>{{ blog.title }}</h2>
         </header>
-        <img src="{{ asset(['images/', blog.image]|join) }}" alt="{{ blog.title }} image not found" class="large"/>
+        <img src="{{ asset(['bundles/blog/images/', blog.image]|join) }}" alt="{{ blog.title }} image not found" class="large"/>
 
         <div>
             <p>{{ blog.blog }}</p>
