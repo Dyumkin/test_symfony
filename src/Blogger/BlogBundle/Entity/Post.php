@@ -8,6 +8,7 @@
 
 namespace Blogger\BlogBundle\Entity;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -121,7 +122,7 @@ class Post {
     /**
      * Set author
      *
-     * @param \Blogger\BlogBundle\Entity\User $user
+     * @param \Application\Sonata\UserBundle\Entity\User $user
      * @return Post
      */
     public function setAuthor(User $user)
@@ -134,7 +135,7 @@ class Post {
     /**
      * Get author
      *
-     * @return \Blogger\BlogBundle\Entity\User
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getAuthor()
     {

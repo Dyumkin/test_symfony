@@ -8,6 +8,7 @@
 
 namespace Blogger\BlogBundle\Entity;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
@@ -119,7 +120,7 @@ class Comment {
     /**
      * Set user
      *
-     * @param \Blogger\BlogBundle\Entity\User $user
+     * @param \Application\Sonata\UserBundle\Entity\User $user
      * @return Comment
      */
     public function setUser(User $user)
@@ -132,7 +133,7 @@ class Comment {
     /**
      * Get user
      *
-     * @return \Blogger\BlogBundle\Entity\User
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUser()
     {

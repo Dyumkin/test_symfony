@@ -5,7 +5,7 @@ services:
             - name: sonata.admin
               manager_type: orm
               group: "blogger.admin.group.content"
-              label: "blogger.admin.model.post"
+              label: "Post"
         arguments:
             - ~
             - Blogger\BlogBundle\Entity\Post
@@ -18,7 +18,7 @@ services:
             - name: sonata.admin
               manager_type: orm
               group: "blogger.admin.group.content"
-              label: "blogger.admin.model.comment"
+              label: "Comment"
         arguments:
             - ~
             - Blogger\BlogBundle\Entity\Comment

@@ -56,7 +56,7 @@ Blogger\BlogBundle\Entity\Post:
             mappedBy: blog
     manyToOne:
         author:
-            targetEntity: Blogger\BlogBundle\Entity\User
+            targetEntity: Application\Sonata\UserBundle\Entity\User
             cascade: {  }
             mappedBy: null
             inversedBy: null

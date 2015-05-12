@@ -107,15 +107,16 @@ sonata_admin:
     dashboard:
         groups:
             blogger.admin.group.content:
-                label: blogger.admin.group.content
+                label: Blog
                 label_catalogue: BlogBundle
                 items:
                     - sonata.admin.post
                     - sonata.admin.comment
+            blogger.admin.group.user:
+                label: User
+                items:
                     - sonata.user.admin.user
                     - sonata.user.admin.group
-            blogger.admin.group.blog:
-                items: ~
                 roles: [ ROLE_ADMIN, ROLE_SUPER_ADMIN ]
             blogger.admin.group.misc: ~
 

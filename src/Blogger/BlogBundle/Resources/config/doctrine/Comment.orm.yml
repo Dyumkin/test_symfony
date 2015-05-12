@@ -45,7 +45,7 @@ Blogger\BlogBundle\Entity\Comment:
                     referencedColumnName: id
             orphanRemoval: false
         user:
-            targetEntity: Blogger\BlogBundle\Entity\User
+            targetEntity: Application\Sonata\UserBundle\Entity\User
             cascade: {  }
             mappedBy: null
             inversedBy: null
