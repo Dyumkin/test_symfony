@@ -69,4 +69,11 @@ class User extends BaseUser
     {
         return $this->comments;
     }
+
+    public function __construct() {
+
+        parent::__construct();
+
+        $this->setRoles(['ROLE_READER']);
+    }
 }

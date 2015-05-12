@@ -21,12 +21,20 @@
             {% block navigation %}
                 <nav>
                     <ul class="navigation">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path ('sonata_admin_dashboard') }}">Admin</a></li>
+                        {% endif %}
                         <li><a href="{{ path('blog_homepage') }}">Home</a></li>
-                        <li><a href="{{ path ('post_new')}}">Create Post</a></li>
-                        <li><a href="{{ path('fos_user_security_login')}}">Login</a></li>
-                        <li><a href="{{ path('fos_user_security_logout')}}">Logout</a></li>
-                        <li><a href="{{ path('fos_user_registration_register')}}">Register</a></li>
-                        <li><a href="{{ path('fos_user_profile_show')}}">Profile</a></li>
+                        {% if is_granted('ROLE_WRITER') %}
+                            <li><a href="{{ path ('post_new') }}">Create Post</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_USER') %}
+                            <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                            <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                        {% endif %}
                         <li><a href="{{ path('blog_about') }}">About</a></li>
                         <li><a href="{{ path('blog_contact') }}">Contact</a></li>
                     </ul>

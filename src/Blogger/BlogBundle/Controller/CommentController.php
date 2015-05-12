@@ -23,7 +23,6 @@ class CommentController extends Controller
 
         $comment = new Comment();
         $comment->setBlog($blog);
-        $comment->setUser($this->getUser());
         $form   = $this->createForm(new CommentType(), $comment);
 
         return $this->render('BlogBundle:Comment:form.html.twig', array(
@@ -38,12 +37,12 @@ class CommentController extends Controller
 
         $comment  = new Comment();
         $comment->setBlog($blog);
-        $comment->setUser($this->getUser());
         $request = $this->getRequest();
         $form    = $this->createForm(new CommentType(), $comment);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $comment->setUser($this->getUser());
             $em = $this->getDoctrine()
                 ->getEntityManager();
             $em->persist($comment);

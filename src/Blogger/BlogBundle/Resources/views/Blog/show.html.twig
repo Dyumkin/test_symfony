@@ -5,10 +5,13 @@
 {% block body %}
     <article class="blog">
         <header>
-            <div class="date"><time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
+            <div class="date">
+                <time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l, F j, Y') }}</time>
+            </div>
             <h2>{{ blog.title }}</h2>
         </header>
-        <img src="{{ asset(['images/', blog.image]|join) }}" alt="{{ blog.title }} image not found" class="large" />
+        <img src="{{ asset(['images/', blog.image]|join) }}" alt="{{ blog.title }} image not found" class="large"/>
+
         <div>
             <p>{{ blog.blog }}</p>
         </div>
@@ -20,6 +23,13 @@
             {% include 'BlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
         </section>
         <h3>Add Comment</h3>
-        {% render controller('BlogBundle:Comment:new',{ 'blog_id': blog.id }) %}
+        {% if is_granted('ROLE_READER') %}
+            {% render controller('BlogBundle:Comment:new',{ 'blog_id': blog.id }) %}
+        {% else %}
+            <p>Please <a href="{{ path('fos_user_security_login') }}">Login</a> or <a
+                        href="{{ path('fos_user_registration_register') }}">Register</a>
+                to set a comment
+            </p>
+        {% endif %}
     </section>
 {% endblock %}
