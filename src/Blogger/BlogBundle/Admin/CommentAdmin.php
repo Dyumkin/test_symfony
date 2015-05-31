@@ -19,7 +19,7 @@ class CommentAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('user', 'entity', array('class' => 'Blogger\BlogBundle\Entity\User'))
+            ->add('user')
             ->add('comment')
             ->add('approved')
         ;
@@ -36,7 +36,7 @@ class CommentAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
+            ->addIdentifier('comment')
             ->add('blog', 'entity', array('class' => 'Blogger\BlogBundle\Entity\Post'))
             ->add('user', 'entity', array('class' => 'Blogger\BlogBundle\Entity\User'))
             ->add('approved')

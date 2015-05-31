@@ -5,12 +5,14 @@ A Symfony project created on March 25, 2015, 9:29 pm.
 
 Install
 
-1) Git clone
-2) composer install
-3) php app/console doctrine:database:create
-4) php app/console doctrine:schema:update --force
-5) php app/console doctrine:fixtures:load
-6) php app/console server:run
+1. Git clone
+2. composer install
+3. php app/console doctrine:database:create
+4. php app/console doctrine:schema:update --force
+5. php app/console doctrine:fixtures:load
+6. php app/console server:run
+
+Get on http:/127.0.0.1:8000/
 
 Useful commands
 

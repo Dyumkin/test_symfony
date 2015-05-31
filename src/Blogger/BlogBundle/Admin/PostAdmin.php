@@ -20,7 +20,7 @@ class PostAdmin extends Admin
     {
         $formMapper
             ->add('title', 'text', array('label' => 'Post Title'))
-            ->add('author', 'entity', array('class' => 'Blogger\BlogBundle\Entity\User'))
+            ->add('author')
             ->add('blog')
             ->add('image')
             ->add('tags')

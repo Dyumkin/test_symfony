@@ -43,8 +43,8 @@ class PageController extends Controller
 
             if ($form->isValid()) {
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Contact enquiry from symblog')
-                    ->setFrom('enquiries@symblog.co.uk')
+                    ->setSubject('Contact enquiry fromblog')
+                    ->setFrom('enquiries@blog.com')
                     ->setTo($this->container->getParameter('blogger_blog.emails.contact_email'))
                     ->setBody($this->renderView('BlogBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)));
                 $this->get('mailer')->send($message);

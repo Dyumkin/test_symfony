@@ -103,6 +103,9 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
+        - { path: ^/post/, role: ROLE_WRITER }
+        - { path: ^/post/new, role: ROLE_WRITER }
+
 parameters:
     # ... other parameters
     security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap

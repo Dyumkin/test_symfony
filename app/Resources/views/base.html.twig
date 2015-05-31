@@ -10,34 +10,60 @@
         <link href='http://fonts.googleapis.com/css?family=Irish+Grover' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=La+Belle+Aurore' rel='stylesheet' type='text/css'>
         <link href="{{ asset('css/screen.css') }}" type="text/css" rel="stylesheet" />
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     {% endblock %}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
 
-<section id="wrapper">
+<section id="wrapper" class="container">
     <header id="header">
         <div class="top">
             {% block navigation %}
-                <nav>
-                    <ul class="navigation">
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path ('sonata_admin_dashboard') }}">Admin</a></li>
-                        {% endif %}
-                        <li><a href="{{ path('blog_homepage') }}">Home</a></li>
-                        {% if is_granted('ROLE_WRITER') %}
-                            <li><a href="{{ path ('post_new') }}">Create Post</a></li>
-                        {% endif %}
-                        {% if is_granted('ROLE_USER') %}
-                            <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
-                            <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
-                        {% else %}
-                            <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
-                            <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
-                        {% endif %}
-                        <li><a href="{{ path('blog_about') }}">About</a></li>
-                        <li><a href="{{ path('blog_contact') }}">Contact</a></li>
-                    </ul>
+                <nav class="navbar navbar-inverse">
+
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Blog</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="{{ path('blog_homepage') }}">Home</a></li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path ('sonata_admin_dashboard') }}">Admin</a></li>
+                            {% endif %}
+                            {% if is_granted('ROLE_WRITER') %}
+                                <li><a href="{{ path ('post_new') }}">Create Post</a></li>
+                                <li><a href="{{ path ('post') }}">My Posts</a></li>
+                            {% endif %}
+                            <li><a href="{{ path('blog_about') }}">About</a></li>
+                            <li><a href="{{ path('blog_contact') }}">Contact</a></li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if is_granted('ROLE_USER') %}
+                                <li><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                            {% else %}
+                                <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                                <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </nav>
             {% endblock %}
         </div>
@@ -62,6 +88,7 @@
     </div>
 </section>
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+{% endblock %}
 </body>
 </html>

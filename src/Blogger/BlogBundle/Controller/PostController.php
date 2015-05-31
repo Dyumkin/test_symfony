@@ -22,8 +22,7 @@ class PostController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('BlogBundle:Post')->findAll();
+        $entities = $em->getRepository('BlogBundle:Post')->findBy(['author' => $this->getUser()]);
 
         return $this->render('BlogBundle:Post:index.html.twig', array(
             'entities' => $entities,
@@ -173,7 +172,10 @@ class PostController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('post_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('blog_show', array(
+                'id' => $id,
+                'slug' => $entity->getSlug(),
+            )));
         }
 
         return $this->render('BlogBundle:Post:edit.html.twig', array(

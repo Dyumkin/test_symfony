@@ -37,6 +37,6 @@ class PostType extends AbstractType
      */
     public function getName()
     {
-        return 'blogger_blogbundle_post';
+        return 'Form';
     }
 }
